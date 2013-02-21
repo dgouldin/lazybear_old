@@ -1,0 +1,164 @@
+<html>
+    <head>
+        <style>
+            body {
+                font: normal 13px Helvetica,Calibri,Optima,sans-serif;
+            }
+            label.question {
+                font-weight: bold;
+            }
+            span.help {
+                color: gray;
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+            }
+            li {
+                list-style-type: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="post" action=".">
+            {% csrf_token %}
+
+            <p>
+                <label class="question" for="id_user_name">
+                    What is your name? First and last, please.
+                </label> <br/>
+                <span class="help">
+                    Please only one reservation request per party.
+                </span> <br/>
+                {{ user_form.first_name }} {{ user_form.last_name }}
+            </p>
+
+            <p>
+                <label class="question" for="id_party_size">
+                    How many people are in your party, total, including you?
+                </label> <br/>
+                <span class="help">
+                    For larger parties, your only option is to schedule a private
+                    dinner for your group.
+                </span> <br/>
+                {{ form.party_size }}
+            </p>
+
+            <p>
+                <label class="question" for="id_other_names">
+                    Care to share the names of any other guests in your party?
+                </label> <br/>
+                {{ form.other_names }}
+            </p>
+
+            <p>
+                <label class="question" for="id_first_choice">
+                    Which night is your first choice for your party?
+                </label> <br/>
+                <span class="help">
+                    90% of the time, if a party gets in, it's on their first
+                    choice day.
+                </span> <br/>
+                {{ form.first_choice }}
+            </p>
+
+            <p>
+                <label class="question" for="id_other_choices">
+                    Even if they aren't your first choice, which other nights is
+                    your party available to come? Check all that apply.
+                </label> <br/>
+                <span class="help">
+                    Most reservations go to parties on their first choice day, but
+                    we sometimes have to fill in open spots. The more nights your
+                    party is available, the better your chances of getting in from
+                    the waitlist.
+                </span> <br/>
+                {{ form.other_choices }}
+            </p>
+
+            <p>
+                <label class="question" for="id_manual_review">
+                    Check this box if you feel like you've tried and tried to get
+                    in but always been denied, and you feel like we should manually
+                    review your case.
+                </label> <br/>
+                {{ form.manual_review }}
+                I've tried to get in to at least four or five separate weekends and
+                never been offered a spot!
+            </p>
+
+            <p>
+                <label class="question" for="id_email">
+                    What email address should we use to contact you?
+                </label> <br/>
+                {{ user_form.email }}
+            </p>
+
+            <p>
+                <label class="question" for="id_mailing_list">
+                    Should we add that address to our mailing list?
+                </label> <br/>
+                <span class="help">
+                    Your answer to this question does not affect your chances!
+                </span> <br/>
+                {{ user_form.mailing_list }}
+                Add me to the mailing list!
+            </p>
+
+            <p>
+                <label class="question" for="id_confirmation_email">
+                    Would you like a confirmation sent to that email address when
+                    you have submitted this form?
+                </label> <br/>
+                {{ form.confirmation_email }}
+                Send me a confirmation email.
+            </p>
+
+            <p>
+                <label class="question" for="id_phone">
+                    What phone number can we use to contact you?
+                </label> <br/>
+                <span class="help">
+                    Area code and phone number. International numbers should
+                    start with a "+" sign.
+                </span> <br/>
+                {{ user_form.phone }}
+            </p>
+
+            <p>
+                <label class="question" for="id_dietary_restrictions">
+                    Please give us a very detailed explanation of any dietary
+                    restrictions of any member of your party. If your group has no
+                    dietary restrictions, just say 'None.'
+                </label> <br/>
+                <span class="help">
+                    We can accommodate most restrictions, but you must be extremely
+                    detailed, specific, and exhaustive. Each Lazy Bear dinner
+                    includes hundreds of ingredients, most of which never appear on
+                    the menu (indeed, nearly half the bites you'll be served aren't
+                    on the menu). Also, make sure you identify which guest(s) a
+                    particular restriction applies to.
+                </span> <br/>
+                {{ form.dietary_restrictions }}
+            </p>
+
+            <p>
+                <label class="question" for="id_notes">
+                    Is there anything else we should know? If not, you can leave
+                    this space blank.
+                </label> <br/>
+                <span class="help">
+                    If you have a gift certificate code, if you're in the industry,
+                    or if you just want to drop us a note, put it here. We do read
+                    them! But please don't mention a birthday or anniversary. We
+                    get like a hundred birthday and anniversary requests every
+                    weekend, and all you'll do is make us feel terrible that we
+                    can't take your special occasion into account.
+                </span> <br/>
+                {{ form.notes }}
+            </p>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
