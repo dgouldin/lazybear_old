@@ -5,10 +5,8 @@ from importlib import import_module
 
 from .conf.settings.common import *
 
-try:
-    DJANGO_CONF = os.environ['DJANGO_CONF']
-except KeyError:
-    raise ValueError('DJANGO_CONF environment variable must be set!')
+# default conf to prod if env var not set
+DJANGO_CONF = os.environ.get('DJANGO_CONF', 'prod')
 
 import_path = 'lazybear.conf.settings.{0}'.format(DJANGO_CONF)
 module = import_module(import_path)
