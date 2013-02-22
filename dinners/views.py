@@ -22,9 +22,12 @@ def dinner_group_default_reservation(request):
     return redirect(dinner_group_reservation, dinner_group.id)
 
 def dinner_group_reservation(request, dinner_group_id):
-    dinner_group = get_object_or_404(DinnerGroup, pk=dinner_group_id)
-
-    # TODO: check dinner_group reservation open/close
+    now = datetime.now()
+    dinner_group = get_object_or_404(DinnerGroup,
+        pk=dinner_group_id,
+        reservations_open__lte=now,
+        reservations_close__gt=now,
+    )
 
     if request.method == 'POST':
         form = ReservationForm(dinner_group, data=request.POST)

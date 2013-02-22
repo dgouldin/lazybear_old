@@ -1,5 +1,5 @@
 psycopg2==2.4.5
 south==0.7.6
+dj-database-url==0.2.1
 
 git+https://github.com/django/django.git@f23d3ce8d47cc3ec58cb7fb1b32d3d3237c025f5#egg=django
-git+https://github.com/django/django-localflavor-us.git#egg=django-localflavor-us
