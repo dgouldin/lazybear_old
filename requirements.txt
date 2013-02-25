@@ -1,6 +1,9 @@
+boto==2.8.0
+dj-database-url==0.2.1
+django-storages==1.1.6
 gunicorn==0.17.2
 psycopg2==2.4.5
 south==0.7.6
-dj-database-url==0.2.1
+
 
 git+https://github.com/django/django.git@f23d3ce8d47cc3ec58cb7fb1b32d3d3237c025f5#egg=django
